@@ -16,6 +16,3 @@ class CompleteReport(SimpleReport):
           "Produtos estocados por empresa: \n"
           f"{product_qty}"
         )
-
-
-print(CompleteReport.generate(list))
