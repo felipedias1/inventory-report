@@ -15,8 +15,9 @@ class SimpleReport():
 
         comp_name = max(Counter(item["nome_da_empresa"] for item in list))
 
-        return (
+        report = (
           f"Data de fabricação mais antiga: {older_fab}\n"
           f"Data de validade mais próxima: {upcoming_val}\n"
           f"Empresa com maior quantidade de produtos estocados: {comp_name}\n"
         )
+        return report
