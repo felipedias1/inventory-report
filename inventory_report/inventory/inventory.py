@@ -17,6 +17,7 @@ class Inventory(CompleteReport, SimpleReport):
             with open(path) as file:
                 read = json.load(file)
         else:
+            # https://www.askpython.com/python-modules/xmltodict-module we used this lib and method to read the xml file
             with open(path, 'r') as file:
                 selector = xmltodict.parse(file.read())
                 read = selector['dataset']['record']
