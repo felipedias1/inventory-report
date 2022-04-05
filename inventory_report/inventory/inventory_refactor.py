@@ -9,9 +9,12 @@ class InventoryRefactor(Iterable):
         self.data = []
 
     def import_data(self, path, type):
-        data = self.importer.import_data(path)
-        for item in data:
-            self.data.append(item)
+        if type == '':
+            pass
+        else:
+            data = self.importer.import_data(path)
+            for item in data:
+                self.data.append(item)
 
     def __iter__(self):
         return InventoryIterator(self.data)
