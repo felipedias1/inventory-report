@@ -1,5 +1,7 @@
 from collections.abc import Iterable
 from inventory_report.inventory.inventory_iterator import InventoryIterator
+from inventory_report.reports.simple_report import SimpleReport
+from inventory_report.reports.complete_report import CompleteReport
 
 
 class InventoryRefactor(Iterable):
@@ -9,12 +11,10 @@ class InventoryRefactor(Iterable):
         self.data = []
 
     def import_data(self, path, type):
-        if type == '':
-            pass
-        else:
-            data = self.importer.import_data(path)
-            for item in data:
-                self.data.append(item)
+        self.data.extend(self.importer.import_data(path))
+        if type == "simples":
+            return SimpleReport.generate(self.data)
+        return CompleteReport.generate(self.data)
 
     def __iter__(self):
         return InventoryIterator(self.data)
